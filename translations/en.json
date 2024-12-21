@@ -1,10 +1,21 @@
 {
-    "noData": "No pollen data from Pollenrapporten available",
-    "loading": "Loading pollen data...",
-    "attribution": "Data: Swedish Museum of Natural History",
-    "NONE": "None",
-    "LOW": "Low",
-    "MEDIUM": "Medium",
-    "HIGH": "High",
-    "VERY_HIGH": "Very High"
+    "LOADING": "Loading pollen data...",
+    "NO_DATA": "No pollen data from Pollenrapporten available",
+    "POLLEN_FORECAST": "Pollen Forecast",
+    "ATTRIBUTION": "Data: Swedish Museum of Natural History",
+    "TEST_MODE": "Test Mode - Sample Data",
+    
+    "LEVEL_NONE": "None",
+    "LEVEL_LOW": "Low",
+    "LEVEL_MEDIUM": "Medium",
+    "LEVEL_HIGH": "High",
+    "LEVEL_VERY_HIGH": "Very High",
+    
+    "POLLEN_TYPES": {
+        "Birch": "Birch",
+        "Grass": "Grass",
+        "Mugwort": "Mugwort",
+        "Alder": "Alder",
+        "Hazel": "Hazel"
+    }
 }

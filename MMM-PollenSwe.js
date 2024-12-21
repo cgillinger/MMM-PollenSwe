@@ -22,6 +22,7 @@ Module.register("MMM-PollenSwe", {
         autoHide: false, // Auto-hide module if no data
         autoHideDelay: 15, // Minutes to wait before hiding if no data
         testMode: false, // Enable test mode
+        language: config.language || "en",
         testData: { // Sample data for test mode
             levels: [
                 { pollenType: "Birch", level: 4, date: "2024-12-21" },
@@ -51,9 +52,17 @@ Module.register("MMM-PollenSwe", {
         return ["MMM-PollenSwe.css"];
     },
 
+    // Define required translations
+    getTranslations: function() {
+        return {
+            en: "translations/en.json",
+            sv: "translations/sv.json"
+        };
+    },
+
     // Define header for module
     getHeader: function() {
-        return this.data.header || "Pollen Forecast";
+        return this.config.region + " - " + this.translate("POLLEN_FORECAST");
     },
 
     start: function() {
@@ -61,7 +70,9 @@ Module.register("MMM-PollenSwe", {
         this.loaded = false;
         this.pollenData = {};
         
-        // If test mode is enabled, load test data immediately
+        // Set language from config
+        this.config.language = config.language || this.config.language || "en";
+        
         if (this.config.testMode) {
             Log.info("Test mode enabled for " + this.name);
             this.loaded = true;
@@ -86,16 +97,16 @@ Module.register("MMM-PollenSwe", {
         const attribution = document.createElement("div");
         attribution.className = "xsmall dimmed attribution";
         attribution.innerHTML = this.config.testMode ? 
-            "Test Mode - Sample Data" : 
-            "Data: Swedish Museum of Natural History";
+            this.translate("TEST_MODE") : 
+            this.translate("ATTRIBUTION");
         
         if (this.loading) {
-            wrapper.innerHTML = "Loading pollen data...";
+            wrapper.innerHTML = this.translate("LOADING");
             return wrapper;
         }
 
         if (!this.loaded) {
-            wrapper.innerHTML = "No pollen data from Pollenrapporten available";
+            wrapper.innerHTML = this.translate("NO_DATA");
             wrapper.appendChild(attribution);
             
             // Handle auto-hide if enabled
@@ -109,14 +120,6 @@ Module.register("MMM-PollenSwe", {
                 }, this.config.autoHideDelay * 60 * 1000);
             }
             return wrapper;
-        }
-
-        // Show region if enabled
-        if (this.config.showRegion) {
-            const region = document.createElement("div");
-            region.className = "region bright";
-            region.innerHTML = this.config.region;
-            wrapper.appendChild(region);
         }
 
         // Create pollen list
@@ -141,7 +144,9 @@ Module.register("MMM-PollenSwe", {
                 // Pollen type cell
                 const typeCell = document.createElement("td");
                 typeCell.className = "align-left";
-                typeCell.innerHTML = level.pollenType;
+                const pollenTypes = this.translate("POLLEN_TYPES");
+                const translatedType = pollenTypes[level.pollenType] || level.pollenType;
+                typeCell.innerHTML = translatedType;
                 row.appendChild(typeCell);
 
                 // Level cell
@@ -162,14 +167,14 @@ Module.register("MMM-PollenSwe", {
 
     // Helper function to translate level numbers to text
     translateLevel: function(level) {
-        const levels = {
-            0: "None",
-            1: "Low",
-            2: "Medium",
-            3: "High",
-            4: "Very High"
+        const translations = {
+            0: "LEVEL_NONE",
+            1: "LEVEL_LOW",
+            2: "LEVEL_MEDIUM",
+            3: "LEVEL_HIGH",
+            4: "LEVEL_VERY_HIGH"
         };
-        return levels[level] || "Unknown";
+        return this.translate(translations[level] || "UNKNOWN");
     },
 
     // Helper function to get CSS class based on level

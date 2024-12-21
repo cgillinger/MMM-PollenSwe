@@ -1,7 +1,7 @@
 {
   "name": "MMM-PollenSwe",
-  "version": "1.0.0",
-  "description": "Swedish Pollen Warnings module for MagicMirror². Data from Swedish Museum of Natural History's Pollen API.",
+  "version": "1.1.0",
+  "description": "Swedish Pollen Warnings module for MagicMirror². Multi-language support with Swedish and English translations.",
   "main": "MMM-PollenSwe.js",
   "author": "Christian Gillinger",
   "license": "MIT",
@@ -13,12 +13,14 @@
     "magicmirror",
     "pollen",
     "sweden",
-    "weather"
+    "weather",
+    "allergens"
   ],
   "dependencies": {
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "moment": "^2.29.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node_modules/.bin/electron-rebuild"
   }
 }

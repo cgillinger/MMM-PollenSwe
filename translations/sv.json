@@ -1,10 +1,21 @@
 {
-    "noData": "Ingen pollendata tillgänglig från Pollenrapporten",
-    "loading": "Laddar pollendata...",
-    "attribution": "Data: Naturhistoriska riksmuseet",
-    "NONE": "Inga",
-    "LOW": "Låga",
-    "MEDIUM": "Måttliga",
-    "HIGH": "Höga",
-    "VERY_HIGH": "Mycket höga"
+    "LOADING": "Laddar pollendata...",
+    "NO_DATA": "Ingen pollendata tillgänglig från Pollenrapporten",
+    "POLLEN_FORECAST": "Pollenprognos",
+    "ATTRIBUTION": "Data: Naturhistoriska riksmuseet",
+    "TEST_MODE": "Testläge - Exempeldata",
+    
+    "LEVEL_NONE": "Inga",
+    "LEVEL_LOW": "Låga",
+    "LEVEL_MEDIUM": "Måttliga",
+    "LEVEL_HIGH": "Höga",
+    "LEVEL_VERY_HIGH": "Mycket höga",
+    
+    "POLLEN_TYPES": {
+        "Birch": "Björk",
+        "Grass": "Gräs",
+        "Mugwort": "Gråbo",
+        "Alder": "Al",
+        "Hazel": "Hassel"
+    }
 }
