@@ -1,0 +1,195 @@
+.MMM-PollenSwe .pollen-wrapper {
+    width: 100%;
+    text-align: left;
+    padding: 0 10px;
+}
+
+.MMM-PollenSwe .region {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #222;
+    font-size: 0.9em;
+}
+
+.MMM-PollenSwe table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.MMM-PollenSwe .icon {
+    width: 32px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.MMM-PollenSwe .pollen-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0.85);
+}
+
+/* Level-specific colors */
+.MMM-PollenSwe .level-none {
+    color: var(--color-text-dimmed);
+}
+
+.MMM-PollenSwe .level-low {
+    color: #6a9955;  /* Soft green */
+}
+
+.MMM-PollenSwe .level-medium {
+    color: #d7ba7d;  /* Warm yellow */
+}
+
+.MMM-PollenSwe .level-high {
+    color: #ce9178;  /* Soft red */
+}
+
+.MMM-PollenSwe .level-veryhigh {
+    color: #f44747;  /* Bright red */
+}
+
+/* Icon colors for each level */
+.MMM-PollenSwe .pollen-icon.level-none {
+    filter: brightness(0.3);
+}
+
+.MMM-PollenSwe .pollen-icon.level-low {
+    filter: sepia(1) hue-rotate(60deg) saturate(0.5) brightness(0.8);
+}
+
+.MMM-PollenSwe .pollen-icon.level-medium {
+    filter: sepia(1) hue-rotate(30deg) saturate(0.8) brightness(0.9);
+}
+
+.MMM-PollenSwe .pollen-icon.level-high {
+    filter: sepia(1) hue-rotate(340deg) saturate(0.9) brightness(0.9);
+}
+
+.MMM-PollenSwe .pollen-icon.level-veryhigh {
+    filter: sepia(1) hue-rotate(320deg) saturate(1) brightness(1);
+}
+
+/* Attribution styling */
+.MMM-PollenSwe .attribution {
+    margin-top: 10px;
+    border-top: 1px solid #222;
+    padding-top: 5px;
+}
+
+.MMM-PollenSwe .attribution a {
+    color: var(--color-text-dimmed);
+    text-decoration: none;
+}
+
+.MMM-PollenSwe .attribution a:hover {
+    color: var(--color-text-bright);
+}
+
+/* Table cell alignment */
+.MMM-PollenSwe td.align-left {
+    text-align: left;
+    padding-right: 10px;
+}
+
+.MMM-PollenSwe td.align-right {
+    text-align: right;
+}.MMM-PollenSwe .pollen-wrapper {
+    width: 100%;
+    text-align: left;
+    padding: 0 10px;
+}
+
+.MMM-PollenSwe .region {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #222;
+    font-size: 0.9em;
+}
+
+.MMM-PollenSwe table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.MMM-PollenSwe .icon {
+    width: 32px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.MMM-PollenSwe .pollen-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0.85);
+}
+
+/* Level-specific colors */
+.MMM-PollenSwe .level-none {
+    color: var(--color-text-dimmed);
+}
+
+.MMM-PollenSwe .level-low {
+    color: #6a9955;  /* Soft green */
+}
+
+.MMM-PollenSwe .level-medium {
+    color: #d7ba7d;  /* Warm yellow */
+}
+
+.MMM-PollenSwe .level-high {
+    color: #ce9178;  /* Soft red */
+}
+
+.MMM-PollenSwe .level-veryhigh {
+    color: #f44747;  /* Bright red */
+}
+
+/* Icon colors for each level */
+.MMM-PollenSwe .pollen-icon.level-none {
+    filter: brightness(0.3);
+}
+
+.MMM-PollenSwe .pollen-icon.level-low {
+    filter: sepia(1) hue-rotate(60deg) saturate(0.5) brightness(0.8);
+}
+
+.MMM-PollenSwe .pollen-icon.level-medium {
+    filter: sepia(1) hue-rotate(30deg) saturate(0.8) brightness(0.9);
+}
+
+.MMM-PollenSwe .pollen-icon.level-high {
+    filter: sepia(1) hue-rotate(340deg) saturate(0.9) brightness(0.9);
+}
+
+.MMM-PollenSwe .pollen-icon.level-veryhigh {
+    filter: sepia(1) hue-rotate(320deg) saturate(1) brightness(1);
+}
+
+/* Attribution styling */
+.MMM-PollenSwe .attribution {
+    margin-top: 10px;
+    border-top: 1px solid #222;
+    padding-top: 5px;
+}
+
+.MMM-PollenSwe .attribution a {
+    color: var(--color-text-dimmed);
+    text-decoration: none;
+}
+
+.MMM-PollenSwe .attribution a:hover {
+    color: var(--color-text-bright);
+}
+
+/* Table cell alignment */
+.MMM-PollenSwe td.align-left {
+    text-align: left;
+    padding-right: 10px;
+}
+
+.MMM-PollenSwe td.align-right {
+    text-align: right;
+}

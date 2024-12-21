@@ -1,0 +1,24 @@
+{
+  "name": "MMM-PollenSwe",
+  "version": "1.0.0",
+  "description": "Swedish Pollen Warnings module for MagicMirror². Data from Swedish Museum of Natural History's Pollen API.",
+  "main": "MMM-PollenSwe.js",
+  "author": "Christian Gillinger",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgillinger/MMM-PollenSwe.git"
+  },
+  "keywords": [
+    "magicmirror",
+    "pollen",
+    "sweden",
+    "weather"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

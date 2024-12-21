@@ -1,0 +1,10 @@
+{
+    "noData": "Ingen pollendata tillgänglig från Pollenrapporten",
+    "loading": "Laddar pollendata...",
+    "attribution": "Data: Naturhistoriska riksmuseet",
+    "NONE": "Inga",
+    "LOW": "Låga",
+    "MEDIUM": "Måttliga",
+    "HIGH": "Höga",
+    "VERY_HIGH": "Mycket höga"
+}

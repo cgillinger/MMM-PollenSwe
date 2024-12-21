@@ -1,0 +1,10 @@
+{
+    "noData": "No pollen data from Pollenrapporten available",
+    "loading": "Loading pollen data...",
+    "attribution": "Data: Swedish Museum of Natural History",
+    "NONE": "None",
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+    "VERY_HIGH": "Very High"
+}
