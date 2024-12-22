@@ -7,6 +7,8 @@ MMM-PollenSwe is a MagicMirror² module designed to display pollen forecasts for
 ### Note
 This module is under **development** and currently includes functionality to display pollen forecasts. Work is ongoing to translate elements into Swedish.
 
+![Pollen Forecast](pollenSwe.png)
+
 ## Features
 - Displays pollen levels for different regions in Sweden.
 - Includes icons to visually represent pollen levels.
