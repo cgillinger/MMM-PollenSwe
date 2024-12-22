@@ -70,7 +70,7 @@ To add other regions (orter):
 
 ## Credits
 - **API**: Data provided by [Swedish Museum of Natural History's Pollen API](https://api.pollenrapporten.se/docs).
-- **Icons**: Weather icons inspired by Font Awesome, designed by [Erik Flowers](https://erikflowers.github.io/weather-icons/).
+- **Icons**: Weather icons from [Meteocons Weather Icons](https://iconduck.com/sets/meteocons-weather-icons), licensed under [MIT License](https://opensource.org/licenses/MIT).
 
 ## License
 This module is licensed under the [MIT License](https://opensource.org/licenses/MIT).
