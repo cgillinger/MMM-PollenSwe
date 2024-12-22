@@ -135,7 +135,7 @@ Module.register("MMM-PollenSwe", {
                     const iconCell = document.createElement("td");
                     iconCell.className = "icon";
                     const icon = document.createElement("img");
-                    icon.src = "modules/" + this.name + "/icons/pollen-dust-svgrepo-com.svg";
+                    icon.src = "modules/" + this.name + "/icons/pollen-flower.svg";
                     icon.className = "pollen-icon " + this.getLevelClass(level.level);
                     iconCell.appendChild(icon);
                     row.appendChild(iconCell);

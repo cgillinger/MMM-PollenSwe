@@ -22,14 +22,14 @@
 }
 
 .MMM-PollenSwe .icon {
-    width: 25px;
+    width: 50px; /* Doubled from 25px */
     padding-right: 10px;
     vertical-align: middle;
 }
 
 .MMM-PollenSwe .pollen-icon {
-    width: 20px;
-    height: 20px;
+    width: 40px; /* Doubled from 20px */
+    height: 40px; /* Doubled from 20px */
     opacity: 0.85;
 }
 
