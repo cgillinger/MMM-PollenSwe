@@ -20,7 +20,5 @@
     "node-fetch": "^2.7.0",
     "moment": "^2.29.4"
   },
-  "scripts": {
-    "postinstall": "node_modules/.bin/electron-rebuild"
-  }
+  "scripts": {}
 }
