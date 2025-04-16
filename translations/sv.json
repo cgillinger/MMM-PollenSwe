@@ -7,15 +7,23 @@
     
     "LEVEL_NONE": "Inga",
     "LEVEL_LOW": "Låga",
+    "LEVEL_LOW_MEDIUM": "Låga till måttliga",
     "LEVEL_MEDIUM": "Måttliga",
+    "LEVEL_MEDIUM_HIGH": "Måttliga till höga",
     "LEVEL_HIGH": "Höga",
+    "LEVEL_HIGH_VERY_HIGH": "Höga till mycket höga",
     "LEVEL_VERY_HIGH": "Mycket höga",
     
     "POLLEN_TYPES": {
-        "Birch": "Björk",
-        "Grass": "Gräs",
-        "Mugwort": "Gråbo",
         "Alder": "Al",
-        "Hazel": "Hassel"
+        "Wormwood": "Malörtsambrosia",
+        "Mugwort": "Gråbo",
+        "Birch": "Björk",
+        "Hazel": "Hassel",
+        "Beech": "Bok",
+        "Grass": "Gräs",
+        "Oak": "Ek",
+        "Willow": "Sälg och viden",
+        "Elm": "Alm"
     }
 }

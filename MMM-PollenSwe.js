@@ -8,6 +8,7 @@
  * https://api.pollenrapporten.se/docs
  */
 
+
 Module.register("MMM-PollenSwe", {
     defaults: {
         updateInterval: 3600000, // Update every hour
@@ -69,23 +70,24 @@ Module.register("MMM-PollenSwe", {
         Log.info("Starting module: " + this.name);
         this.loaded = false;
         this.pollenData = {};
-        
+
         // Set language from config
         this.config.language = config.language || this.config.language || "en";
-        
+
         if (this.config.testMode) {
             Log.info("Test mode enabled for " + this.name);
             this.loaded = true;
             this.pollenData = this.config.testData;
             this.updateDom(this.config.animationSpeed);
         } else {
-            this.scheduleUpdate(this.config.initialLoadDelay);
+            this.fetchRegions();
         }
         
         this.updateTimer = null;
         this.lastUpdateTime = null;
         this.hidden = false;
         this.autoHideTimer = null;
+        this.forecastUrl = null;
     },
 
     // Override dom generator
@@ -99,7 +101,7 @@ Module.register("MMM-PollenSwe", {
         attribution.innerHTML = this.config.testMode ? 
             this.translate("TEST_MODE") : 
             this.translate("ATTRIBUTION");
-        
+
         if (this.loading) {
             wrapper.innerHTML = this.translate("LOADING");
             return wrapper;
@@ -144,9 +146,8 @@ Module.register("MMM-PollenSwe", {
                 // Pollen type cell
                 const typeCell = document.createElement("td");
                 typeCell.className = "align-left";
-                const pollenTypes = this.translate("POLLEN_TYPES");
-                const translatedType = pollenTypes[level.pollenType] || level.pollenType;
-                typeCell.innerHTML = translatedType;
+                const pollenName = this.getPollenType(level.pollenId);
+                typeCell.innerHTML = pollenName;
                 row.appendChild(typeCell);
 
                 // Level cell
@@ -165,14 +166,21 @@ Module.register("MMM-PollenSwe", {
         return wrapper;
     },
 
+    // For info about the mapping, see:
+    // https://api.pollenrapporten.se/v1/pollen-level-definitions?offset=0&limit=100
+    // (Values: 0 -> 7)
+
     // Helper function to translate level numbers to text
     translateLevel: function(level) {
         const translations = {
             0: "LEVEL_NONE",
             1: "LEVEL_LOW",
-            2: "LEVEL_MEDIUM",
-            3: "LEVEL_HIGH",
-            4: "LEVEL_VERY_HIGH"
+            2: "LEVEL_LOW_MEDIUM",
+            3: "LEVEL_MEDIUM",
+            4: "LEVEL_MEDIUM_HIGH",
+            5: "LEVEL_HIGH",
+            6: "LEVEL_HIGH_VERY_HIGH",
+            7: "LEVEL_VERY_HIGH"
         };
         return this.translate(translations[level] || "UNKNOWN");
     },
@@ -182,11 +190,35 @@ Module.register("MMM-PollenSwe", {
         const classes = {
             0: "level-none",
             1: "level-low",
-            2: "level-medium",
-            3: "level-high",
-            4: "level-veryhigh"
+            2: "level-low-medium",
+            3: "level-medium",
+            4: "level-medium-high",
+            5: "level-high",
+            6: "level-high-very-high",
+            7: "level-very-high"
         };
         return classes[level] || "";
+    },
+
+    // Helper function to get pollen type from pollen ID
+    getPollenType: function(pollenId) {
+        // Manually retrieved from the URL below (to simplify translation to non-Swedish)
+        // https://api.pollenrapporten.se/v1/pollen-types?offset=0&limit=100
+        const pollenIds = {
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323236": "Alder",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323533": "Wormwood",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323530": "Mugwort",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323332": "Birch",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323233": "Hazel",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323335": "Beech",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323433": "Grass",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323337": "Oak",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323330": "Willow",
+            "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323331": "Elm"
+        };
+        const pollenTypes = this.translate("POLLEN_TYPES");
+        const pollenName = pollenIds[pollenId];
+        return pollenTypes[pollenName] || pollenName || "Unknown";
     },
 
     // Update pollen data
@@ -195,11 +227,16 @@ Module.register("MMM-PollenSwe", {
             Log.info("Test mode: Skipping API update");
             return;
         }
-        
+
         this.loading = true;
         this.sendSocketNotification("GET_POLLEN_DATA", {
-            regionId: this.config.regions[this.config.region] || this.config.regionId
+            forecastUrl: this.forecastUrl
         });
+    },
+
+    // Fetch the list of all regions
+    fetchRegions: function() {
+        this.sendSocketNotification("GET_REGIONS");
     },
 
     // Schedule next update
@@ -218,7 +255,8 @@ Module.register("MMM-PollenSwe", {
             this.loaded = true;
             this.pollenData = payload;
             this.lastUpdateTime = moment();
-            
+            Log.info("Pollen data received:", this.pollenData);
+
             // If we have data and module was hidden, show it again
             if (this.hidden && this.pollenData.levels && this.pollenData.levels.length > 0) {
                 this.show(1000, function() {
@@ -226,9 +264,25 @@ Module.register("MMM-PollenSwe", {
                 });
                 clearTimeout(this.autoHideTimer);
             }
-            
+
             this.updateDom(this.config.animationSpeed);
             this.scheduleUpdate(this.config.updateInterval);
+        }
+        else if (notification === "REGIONS_DATA") {
+            Log.info("Regions data received:", payload);
+            Log.info("Looking for: " + this.config.region);
+            entry = payload.filter(entry => entry.name === this.config.region);
+            if (entry.length > 0) {
+                Log.info("Found region ID for " + this.config.region + ": " + entry[0].id);
+                Log.info("Found: ", entry);
+                this.forecastUrl = entry[0].forecasts;
+                this.scheduleUpdate(this.config.initialLoadDelay);
+            }
+            else {
+                Log.error("The configured region '" + this.config.region + "' does not exist.");
+                const regionList = payload.map(entry => entry.name);
+                Log.error("Existing regions: " + regionList.join(", "));
+            }
         }
     }
 });
