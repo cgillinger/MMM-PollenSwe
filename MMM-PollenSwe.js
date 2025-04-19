@@ -13,11 +13,8 @@ Module.register("MMM-PollenSwe", {
     defaults: {
         updateInterval: 3600000, // Update every hour
         region: "Stockholm", // Default region
-        regionId: "00000000-0000-4000-8000-000049960326", // Stockholm region ID
         initialLoadDelay: 0, // No delay for first check
-        retryDelay: 2500, // Retry 2.5 seconds later if API fetch fails
         showIcon: true,
-        showRegion: true,
         animationSpeed: 1000,
         maxPollensShown: 5, // Maximum number of pollen types to show
         autoHide: false, // Auto-hide module if no data
@@ -26,21 +23,14 @@ Module.register("MMM-PollenSwe", {
         language: config.language || "en",
         testData: { // Sample data for test mode
             levels: [
-                { pollenType: "Birch", level: 4, date: "2024-12-21" },
-                { pollenType: "Grass", level: 3, date: "2024-12-21" },
-                { pollenType: "Mugwort", level: 2, date: "2024-12-21" },
-                { pollenType: "Alder", level: 1, date: "2024-12-21" },
-                { pollenType: "Hazel", level: 0, date: "2024-12-21" }
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323533", level: 6, date: "2025-04-19T00:00:00" },
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323330", level: 4, date: "2025-04-19T00:00:00" },
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323332", level: 3, date: "2025-04-19T00:00:00" },
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323331", level: 2, date: "2025-04-19T00:00:00" },
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323433", level: 0, date: "2025-04-19T00:00:00" },
+                { pollenId: "2a2a2a2a-2a2a-4a2a-aa2a-2a313a323337", level: 0, date: "2025-04-19T00:00:00" }
             ]
         },
-        // Available regions and their IDs
-        regions: {
-            "Stockholm": "00000000-0000-4000-8000-000049960326",
-            "Göteborg": "00000000-0000-4000-8000-00004996037e",
-            "Malmö": "00000000-0000-4000-8000-0000499602e7",
-            "Luleå": "00000000-0000-4000-8000-000049960344",
-            "Kiruna": "00000000-0000-4000-8000-000049960341"
-        }
     },
 
     // Required scripts
@@ -280,6 +270,7 @@ Module.register("MMM-PollenSwe", {
             }
             else {
                 Log.error("The configured region '" + this.config.region + "' does not exist.");
+                this.loading = false;
                 const regionList = payload.map(entry => entry.name);
                 Log.error("Existing regions: " + regionList.join(", "));
             }
