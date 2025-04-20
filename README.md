@@ -44,20 +44,12 @@ Add the following configuration block to the `config.js` file of your MagicMirro
 
 ### Adding Other Regions
 To add other regions (orter):
-1. Locate the `regionId` for your desired region using the [API's `/regions` endpoint](https://api.pollenrapporten.se/v1/regions).
-2. Add the region and its corresponding `regionId` to the module's `regions` configuration in `config.js`:
-   ```javascript
-   regions: {
-     "Stockholm": "00000000-0000-4000-8000-000049960326",
-     "Göteborg": "00000000-0000-4000-8000-00004996037e",
-     "CustomRegion": "YOUR_CUSTOM_REGION_ID"
-   }
-   ```
-3. Update the `region` configuration option with the new region name (`"CustomRegion"` in this example).
+1. Locate your desired region using the [API's `/regions` endpoint](https://api.pollenrapporten.se/v1/regions).
+2. Update the `region` configuration option with the region name.
 
 ### Default Configuration Options
 | Option             | Description                                                                                 | Default           |
-|---------------------|---------------------------------------------------------------------------------------------|-------------------|
+|--------------------|---------------------------------------------------------------------------------------------|-------------------|
 | `region`           | Name of the region to display pollen data for.                                              | `Stockholm`       |
 | `updateInterval`   | Time in milliseconds between updates.                                                       | `3600000` (1 hr)  |
 | `showIcon`         | Whether to display icons representing pollen levels.                                        | `true`            |

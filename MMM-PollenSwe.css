@@ -42,7 +42,15 @@
     color: #85c379;  /* Brighter green */
 }
 
+.MMM-PollenSwe .level-low-medium {
+    color: #e6c07b;  /* Warmer yellow */
+}
+
 .MMM-PollenSwe .level-medium {
+    color: #e6c07b;  /* Warmer yellow */
+}
+
+.MMM-PollenSwe .level-medium-high {
     color: #e6c07b;  /* Warmer yellow */
 }
 
@@ -50,7 +58,11 @@
     color: #e06c75;  /* Brighter red */
 }
 
-.MMM-PollenSwe .level-veryhigh {
+.MMM-PollenSwe .level-high-very-high {
+    color: #e06c75;  /* Brighter red */
+}
+
+.MMM-PollenSwe .level-very-high {
     color: #ff6b6b;  /* More vivid red */
 }
 

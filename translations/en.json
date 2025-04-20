@@ -7,15 +7,23 @@
     
     "LEVEL_NONE": "None",
     "LEVEL_LOW": "Low",
+    "LEVEL_LOW_MEDIUM": "Low to Medium",
     "LEVEL_MEDIUM": "Medium",
+    "LEVEL_MEDIUM_HIGH": "Medium to High",
     "LEVEL_HIGH": "High",
+    "LEVEL_HIGH_VERY_HIGH": "High to Very High",
     "LEVEL_VERY_HIGH": "Very High",
-    
+
     "POLLEN_TYPES": {
-        "Birch": "Birch",
-        "Grass": "Grass",
-        "Mugwort": "Mugwort",
         "Alder": "Alder",
-        "Hazel": "Hazel"
+        "Wormwood": "Wormwood ragweed",
+        "Mugwort": "Mugwort",
+        "Birch": "Birch",
+        "Hazel": "Hazel",
+        "Beech": "Beech",
+        "Grass": "Grass",
+        "Oak": "Oak",
+        "Willow": "Willow",
+        "Elm": "Elm"
     }
 }
